@@ -1,0 +1,20 @@
+import React from 'react';
+
+interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: 'default' | 'destructive' | 'outline';
+}
+
+export function Badge({ variant = 'default', className = '', ...props }: BadgeProps) {
+  const variantClasses = {
+    default: 'bg-primary text-primary-foreground',
+    destructive: 'bg-destructive text-destructive-foreground',
+    outline: 'border border-input bg-background',
+  };
+
+  return (
+    <div
+      className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 ${variantClasses[variant]} ${className}`}
+      {...props}
+    />
+  );
+}

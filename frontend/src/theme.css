@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  /* Equipos */
+  --color-team-red: #DC2626;
+  --color-team-red-light: #FEE2E2;
+  --color-team-red-dark: #991B1B;
+  --color-team-blue: #2563EB;
+  --color-team-blue-light: #DBEAFE;
+  --color-team-blue-dark: #1E3A8A;
+
+  /* Cartas */
+  --color-card-neutral: #9CA3AF;
+  --color-card-neutral-bg: #F3F4F6;
+  --color-card-neutral-text: #374151;
+  --color-card-hidden-bg: #F9FAFB;
+  --color-card-hidden-border: #E5E7EB;
+  --color-card-assassin-bg: #111827;
+  --color-card-assassin-text: #F9FAFB;
+  --color-card-assassin-accent: #EF4444;
+
+  /* Spymaster overlay colors (sobre la carta) */
+  --color-spy-red-bg: #FEE2E2;
+  --color-spy-red-border: #DC2626;
+  --color-spy-blue-bg: #DBEAFE;
+  --color-spy-blue-border: #2563EB;
+  --color-spy-neutral-bg: #F3F4F6;
+  --color-spy-neutral-border: #9CA3AF;
+  --color-spy-assassin-bg: #111827;
+  --color-spy-assassin-border: #000000;
+
+  /* Timer */
+  --color-timer-normal: #10B981;
+  --color-timer-warning: #F59E0B;
+  --color-timer-danger: #EF4444;
+  --color-timer-ultimatum: #DC2626;
+
+  /* Tipografía fluida */
+  --font-size-card: clamp(0.5rem, 1.8vw + 0.3vh, 1.1rem);
+  --font-size-gameBar: clamp(0.65rem, 1.5vw, 0.9rem);
+
+  /* Safe areas */
+  --spacing-safe-bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem);
+  --spacing-safe-top: calc(env(safe-area-inset-top, 0px) + 0.5rem);
+
+  /* Radii */
+  --radius-card: 0.5rem;
+  --radius-sheet: 1rem 1rem 0 0;
+}
+
+/* Dark mode: redefinir variables */
+@media (prefers-color-scheme: dark) {
+  @theme {
+    --color-card-hidden-bg: #1F2937;
+    --color-card-hidden-border: #374151;
+    --color-card-neutral-bg: #374151;
+    --color-card-neutral-text: #D1D5DB;
+    --color-spy-neutral-bg: #374151;
+    --color-spy-neutral-border: #6B7280;
+    --color-spy-assassin-bg: #111827;
+    --color-spy-assassin-border: #374151;
+  }
+}
+
+/* También aplicar cuando data-theme="dark" en <html> (toggle manual) */
+[data-theme="dark"] {
+  --color-card-hidden-bg: #1F2937;
+  --color-card-hidden-border: #374151;
+  --color-card-neutral-bg: #374151;
+  --color-card-neutral-text: #D1D5DB;
+  --color-spy-neutral-bg: #374151;
+  --color-spy-neutral-border: #6B7280;
+  --color-spy-assassin-bg: #111827;
+  --color-spy-assassin-border: #374151;
+}

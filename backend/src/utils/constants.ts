@@ -1,0 +1,14 @@
+export const MAX_PLAYERS_PER_ROOM = 8;
+export const TIMER_WARNING_SECONDS = 10;
+export const TIMER_DANGER_SECONDS = 5;
+export const TIMER_ULTIMATUM_SECONDS = 5;
+export const TIMER_BONUS_ON_CORRECT = 10;
+export const ROOM_CLEANUP_DELAY_MS = 600_000; // 10 minutes
+export const MAX_ROOMS = 100;
+export const MIN_WORD_BANK_SIZE = 25;
+export const DEFAULT_WORD_BANK_SIZE = 250;
+export const DEFAULT_TURN_TIME_SECONDS = 90;
+export const DEFAULT_FIRST_TURN_TIME_SECONDS = 120;
+export const ROOM_ID_MIN = 1000;
+export const ROOM_ID_MAX = 9999;
+export const RECONNECT_TIMEOUT_MS = 30_000;
