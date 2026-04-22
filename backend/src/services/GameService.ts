@@ -12,7 +12,7 @@ export type GameError =
   | { type: 'attempts_exceeded' };
 
 export type GameEffect =
-  | { type: 'emit'; event: string; payload: any }
+  | { type: 'emit'; event: 'clue:submitted' | 'turn:changed' | 'card:revealed' | 'game:over'; payload: any }
   | { type: 'timer_add'; seconds: number }
   | { type: 'timer_start'; seconds: number }
   | { type: 'timer_reset' };
@@ -58,7 +58,7 @@ export class GameService {
       return { success: false, error: { type: 'invalid_turn' } };
     }
 
-    const newState = { ...state, clue: { word, number }, currentRole: 'operative' };
+    const newState: GameState = { ...state, clue: { word, number }, currentRole: 'operative' };
     const attempts = config.limitAttempts ? number + 1 : null;
     newState.attemptsLeft = attempts;
 
@@ -136,7 +136,7 @@ export class GameService {
       return { success: false, error: { type: 'invalid_turn' } };
     }
 
-    const newState = { ...state, currentTeam: team === 'red' ? 'blue' : 'red', currentRole: 'spymaster', clue: null, attemptsLeft: null, isFirstTurn: false };
+    const newState: GameState = { ...state, currentTeam: team === 'red' ? 'blue' : 'red', currentRole: 'spymaster', clue: null, attemptsLeft: null, isFirstTurn: false };
     const effects: GameEffect[] = [
       { type: 'emit', event: 'turn:changed', payload: { team: newState.currentTeam, role: 'spymaster', timeLimit: config.turnTimeSeconds } },
       { type: 'timer_reset' },
