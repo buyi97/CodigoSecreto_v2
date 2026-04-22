@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Button } from './ui/Button';
-import { Input } from './ui/Input';
-import { CreateRoomForm } from './lobby/CreateRoomForm';
-import { JoinRoomForm } from './lobby/JoinRoomForm';
+import { Button } from '../ui/Button'; // ".." para subir a components y entrar a ui
+import { Input } from '../ui/Input';   // ".." para subir a components y entrar a ui
+import { CreateRoomForm } from './CreateRoomForm'; // Estás en la misma carpeta (lobby)
+import { JoinRoomForm } from './JoinRoomForm';     // Estás en la misma carpeta (lobby)
 
 export function HomeScreen() {
   const [playerName, setPlayerName] = useState('');
