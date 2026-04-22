@@ -13,6 +13,7 @@ interface ServerToClientEvents {
   'config:locked': () => void;
   'config:unlocked': () => void;
   'error': (message: string) => void;
+  'you_joined': (playerId: string) => void;
 }
 
 interface ClientToServerEvents {
@@ -45,6 +46,7 @@ export function handleSocket(
       currentRoomId = roomId;
       currentPlayerId = Array.from(roomManager.getRoom(roomId)!.players.keys())[0];
       socket.join(roomId);
+      socket.emit('you_joined', currentPlayerId); // <-- LÍNEA NUEVA
       socket.emit('game:full_state', getFullState(roomId, roomManager));
     } catch (error) {
       socket.emit('error', (error as Error).message);
@@ -58,6 +60,7 @@ export function handleSocket(
       currentPlayerId = playerId;
       socket.join(data.roomId);
       socket.to(data.roomId).emit('game:full_state', getFullState(data.roomId, roomManager));
+      socket.emit('you_joined', currentPlayerId); // <-- LÍNEA NUEVA
       socket.emit('game:full_state', getFullState(data.roomId, roomManager));
     } catch (error) {
       socket.emit('error', (error as Error).message);

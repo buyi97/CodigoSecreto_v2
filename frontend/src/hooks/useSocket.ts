@@ -7,7 +7,7 @@ import { useUIStore } from '../store/uiStore';
 export function useSocket() {
   const socketRef = useRef<any>(null);
   const { setGameState, revealCard, updateTurn, setClue, endGame } = useGameStore();
-  const { setRoom, updatePlayers, updateConfig, updateHistory } = useRoomStore();
+  const { setRoom, updatePlayers, updateConfig, updateHistory, setPlayerId } = useRoomStore();
   const { setError } = useUIStore();
 
   useEffect(() => {
@@ -39,6 +39,10 @@ export function useSocket() {
 
     socket.on('game:over', (payload) => {
       endGame(payload.winner, payload.reason);
+    });
+    
+    socket.on('you_joined', (id) => {
+      setPlayerId(id);
     });
 
     socket.on('error', (message) => {

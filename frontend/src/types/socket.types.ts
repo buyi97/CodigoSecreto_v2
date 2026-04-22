@@ -9,6 +9,7 @@ export interface ServerToClientEvents {
   'config:locked': () => void;
   'config:unlocked': () => void;
   'error': (message: string) => void;
+  'you_joined': (playerId: string) => void;
 }
 
 export interface ClientToServerEvents {
