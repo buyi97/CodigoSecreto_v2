@@ -17,7 +17,7 @@ function App() {
         <GameBar />
         <Routes>
           <Route path="/" element={<HomeScreen />} />
-          <Route path="/sala=:roomId" element={<RoomLobby />} />
+          <Route path="/sala/:roomId" element={<RoomLobby />} />
         </Routes>
         <EndGameOverlay />
       </div>

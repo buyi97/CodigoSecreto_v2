@@ -15,10 +15,10 @@ export function HomeScreen() {
 
   // Escuchar cuando el estado de la sala cambie para redirigir
   useEffect(() => {
-    if (room?.roomId) {
-      navigate(`/sala=${room.roomId}`);
+    if (room?.id) {
+      navigate(`/sala/${room.id}`); // <-- Cambio de = a /
     }
-  }, [room?.roomId, navigate]);
+  }, [room?.id, navigate]);
 
   if (mode === 'create') {
     return <CreateRoomForm playerName={playerName} onBack={() => setMode('home')} />;
