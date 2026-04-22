@@ -27,5 +27,6 @@
     "typescript": "^5.0.0",
     "vite": "^4.4.0",
     "tailwindcss": "^4.0.0-alpha.25"
+    "@tailwindcss/vite": "^4.0.0-alpha.25"
   }
 }

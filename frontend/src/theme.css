@@ -46,6 +46,14 @@
   /* Radii */
   --radius-card: 0.5rem;
   --radius-sheet: 1rem 1rem 0 0;
+  
+  
+  --color-primary: #0f172a;
+  --color-primary-foreground: #f8fafc;
+  --color-background: #ffffff;
+  --color-input: #e2e8f0;
+  --color-accent: #f1f5f9;
+  --color-accent-foreground: #0f172a;
 }
 
 /* Dark mode: redefinir variables */
