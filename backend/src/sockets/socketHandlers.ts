@@ -44,11 +44,11 @@ export function handleSocket(
     try {
       const roomId = await roomManager.createRoom(data.name, data.isPrivate, data.password);
       
-      // EL FIX: Agregarte a ti mismo a la sala como Administrador
+      // ESTA ES LA LÍNEA CRÍTICA: Te agregas a ti mismo como Admin (true)
       const playerId = await roomManager.addPlayerToRoom(roomId, data.name, true, data.password);
 
       currentRoomId = roomId;
-      currentPlayerId = playerId;
+      currentPlayerId = playerId; // Ahora sí tienes un ID válido
       socket.join(roomId);
       
       socket.emit('you_joined', currentPlayerId);

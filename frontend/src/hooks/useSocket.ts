@@ -21,7 +21,7 @@ export function useSocket() {
     socketRef.current = socket;
 
     socket.on('game:full_state', (payload) => {
-      // Forzamos a que tenga la propiedad 'id' que esperan tus componentes
+      // Forzamos a que tenga la propiedad 'id' que esperan tus componentes visuales
       const normalizedRoom = { ...payload, id: payload.roomId || payload.id };
       setRoom(normalizedRoom);
       setGameState(payload.gameState);

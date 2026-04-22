@@ -21,8 +21,8 @@ export function RoomLobby() {
     }
   }, [room, playerId, navigate]);
 
-  // Si están nulos, retorna null para no crashear, pero el useEffect ya se encarga de redirigir
-  if (!room || !playerId) return null; 
+  if (!room) return <div className="p-4 text-center mt-10">Cargando datos de la sala...</div>;
+  if (!playerId) return <div className="p-4 text-center mt-10 text-red-500 font-bold">Error: El servidor no te asignó un ID de jugador. Refresca la página o vuelve al inicio.</div>;
 
   const currentPlayer = room.players.find(p => p.id === playerId);
   const isAdmin = currentPlayer?.isAdmin;
