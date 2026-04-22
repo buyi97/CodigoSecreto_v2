@@ -1,8 +1,8 @@
 import { GameState, Card } from '../models/GameState';
 import { GameConfig } from '../models/GameConfig';
 import { Team, Role } from '../models/Player';
-import { generateBoard } from './boardGenerator';
-import { TIMER_BONUS_ON_CORRECT } from './constants';
+import { generateBoard } from '../utils/boardGenerator';
+import { TIMER_BONUS_ON_CORRECT } from '../utils/constants';
 
 export type GameError =
   | { type: 'invalid_turn' }

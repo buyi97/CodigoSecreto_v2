@@ -1,6 +1,6 @@
 import { Socket } from 'socket.io';
-import { RoomManager } from './RoomManager';
-import { GameService } from './GameService';
+import { RoomManager } from '../services/RoomManager';
+import { GameService } from '../services/GameService';
 
 interface ServerToClientEvents {
   'game:full_state': (payload: any) => void;
