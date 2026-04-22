@@ -43,10 +43,15 @@ export function handleSocket(
   socket.on('create_room', async (data) => {
     try {
       const roomId = await roomManager.createRoom(data.name, data.isPrivate, data.password);
+      
+      // EL FIX: Agregarte a ti mismo a la sala como Administrador
+      const playerId = await roomManager.addPlayerToRoom(roomId, data.name, true, data.password);
+
       currentRoomId = roomId;
-      currentPlayerId = Array.from(roomManager.getRoom(roomId)!.players.keys())[0];
+      currentPlayerId = playerId;
       socket.join(roomId);
-      socket.emit('you_joined', currentPlayerId); // <-- LÍNEA NUEVA
+      
+      socket.emit('you_joined', currentPlayerId);
       socket.emit('game:full_state', getFullState(roomId, roomManager));
     } catch (error) {
       socket.emit('error', (error as Error).message);

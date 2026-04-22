@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react'; // <-- Agregar useEffect
+import { useNavigate } from 'react-router-dom'; // <-- Agregar useNavigate
 import { useRoomStore } from '../../store/roomStore';
 import { useConfigStore } from '../../store/configStore';
 import { PlayerList } from './PlayerList';
@@ -11,8 +12,17 @@ export function RoomLobby() {
   const { room, playerId } = useRoomStore();
   const { config } = useConfigStore();
   const socket = socketClient.getSocket();
+  const navigate = useNavigate(); // <-- Instanciar
 
-  if (!room || !playerId) return null;
+  // EL FIX: Si el usuario recarga la página y se borra la memoria, volver al menú
+  useEffect(() => {
+    if (!room || !playerId) {
+      navigate('/');
+    }
+  }, [room, playerId, navigate]);
+
+  // Si están nulos, retorna null para no crashear, pero el useEffect ya se encarga de redirigir
+  if (!room || !playerId) return null; 
 
   const currentPlayer = room.players.find(p => p.id === playerId);
   const isAdmin = currentPlayer?.isAdmin;
